@@ -1,0 +1,33 @@
+.navbar{
+    padding: 16px;
+}
+.navbar-nav{
+    margin-right: auto;
+}
+.search-box{
+    display: flex;
+    align-items: center;
+}
+.form-control{
+    margin-right: 8px;
+}
+.btn{
+    background-color: #5cd5c2;
+    color: white;
+}
+.btn2{
+    background-color:  #5cd5c2;
+    color: white;
+    margin-right: 5px;
+}
+.brand{
+    font-family:Arial, Helvetica, sans-serif;
+    color: #5cd5c2;
+    font-weight: bolder;
+}
+.nav-link{
+    font-size: large;
+    margin-left: 90px;
+    font-weight: bold;
+    font-family:Arial, Helvetica, sans-serif ;
+}

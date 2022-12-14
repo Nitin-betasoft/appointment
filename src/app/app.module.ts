@@ -22,10 +22,19 @@ import {AngularFireModule} from "@angular/fire/compat"
   imports: [
     BrowserModule,
     AppRoutingModule,
-    AngularFireModule
+    AngularFireModule.initializeApp(
+      {
+        apiKey: "AIzaSyC_9i2b_l7EwwyQUzWPSs7SYdKR4F0nXo8",
+        authDomain: "appointment-e776f.firebaseapp.com",
+        projectId: "appointment-e776f",
+        storageBucket: "appointment-e776f.appspot.com",
+        messagingSenderId: "680279727812",
+        appId: "1:680279727812:web:03692e62ff2189c658b391"}
+      
+    )
     
   ],
-  providers: [],
+  providers: [AngularFireModule],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

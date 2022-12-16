@@ -8,7 +8,17 @@ import { SignupComponent } from './components/signup/signup.component';
 import { HomeComponent } from './components/home/home.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
-import {AngularFireModule} from "@angular/fire/compat"
+import { AngularFireModule } from '@angular/fire/compat';
+import { FormsModule } from '@angular/forms';
+import { AddComponent } from './components/add/add.component';
+import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
+import { environment } from '../environments/environment';
+import { provideAuth, getAuth } from '@angular/fire/auth';
+import { provideFirestore, getFirestore } from '@angular/fire/firestore';
+import { AngularFirestoreModule } from '@angular/fire/compat/firestore/';
+import { provideDatabase,getDatabase } from '@angular/fire/database';
+import { ToastrModule } from 'ngx-toastr';
+
 
 @NgModule({
   declarations: [
@@ -17,24 +27,24 @@ import {AngularFireModule} from "@angular/fire/compat"
     SignupComponent,
     HomeComponent,
     DashboardComponent,
-    NavbarComponent
+    NavbarComponent,
+    AddComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    AngularFireModule.initializeApp(
-      {
-        apiKey: "AIzaSyC_9i2b_l7EwwyQUzWPSs7SYdKR4F0nXo8",
-        authDomain: "appointment-e776f.firebaseapp.com",
-        projectId: "appointment-e776f",
-        storageBucket: "appointment-e776f.appspot.com",
-        messagingSenderId: "680279727812",
-        appId: "1:680279727812:web:03692e62ff2189c658b391"}
-      
-    )
+    ToastrModule.forRoot(),
     
+    FormsModule,
+    AngularFirestoreModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    provideFirebaseApp(() => initializeApp(environment.firebase)),
+    provideAuth(() => getAuth()),
+    provideFirestore(() => getFirestore()),
+    provideDatabase(() => getDatabase()),
+
   ],
   providers: [AngularFireModule],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

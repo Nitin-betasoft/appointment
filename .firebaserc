@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "appointment-e776f": {
+      "hosting": {
+        "appointment": [
+          "appointment-e776f"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "appointment-e776f"
+  }
+}

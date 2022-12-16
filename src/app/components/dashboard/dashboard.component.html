@@ -1,5 +1,34 @@
+<button class="btn btn-danger btn3" (click)="Logout()" >LogOut</button>
 <h1>Welcome to NSH</h1>
 <br>
+<div class="row">
+    <div class="col-lg-6">
+<table class="table" border="2px">
+    <thead>
+      <tr>
+        <th scope="col">S.No</th>
+        <th scope="col">Name</th>
+        <th scope="col">Email</th>
+        <th>Date</th>
+       
+        
+      </tr>
+    </thead>
 
+    <tbody *ngFor="let data of UsersData; index as i">
+      <tr>
+        <th scope="row">{{i+1}}</th>
+        <td>{{data.firstName}} {{data.lastName}}</td>
+        <td>{{data.email}}</td>
+        <td>{{data.date}}</td>
+        <td><button (click)="getUsers()">edit</button>
+          <button (click)="delUsers(data.id)">delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+</div>
 
-<button (click)="Logout()" >LogOut</button>
+<button class="btn btn-success my-2 my-sm-0 btn2" routerLink="add">Create New</button>
+

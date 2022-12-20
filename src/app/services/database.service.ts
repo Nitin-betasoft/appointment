@@ -11,7 +11,7 @@ export class DatabaseService {
   constructor(private db:AngularFirestore,public router:Router, private toastr:ToastrService) { }
   
 
-    async addNewUser( _fName:string, _lName:string, _email:string,_date:string) {
+async addNewUser( _fName:string, _lName:string, _email:string,_date:string,_time:string) {
         let userdata:any=localStorage.getItem('user')
         let userData = JSON.parse(userdata)
         let datedata = await this.getUsersData(_date)
@@ -27,13 +27,13 @@ export class DatabaseService {
           console.log("not exists")
           let gid=this.generateid(8)
           console.log("gid =>", gid)
-          return this.db.collection("users").doc().set({firstName:_fName,lastName:_lName,email:_email,date:_date, userId: userData.uid,_id:gid}),this.router.navigate(['/dashboard']);
+          return this.db.collection("users").doc(gid).set({firstName:_fName,lastName:_lName,email:_email,date:_date, userId: userData.uid,_id:gid,time:_time}),this.router.navigate(['/dashboard']);
           
         }
         
     }
 
-    async getUsersData(date:any) {
+async getUsersData(date:any) {
       return new Promise<any>((resolve)=> {
         if(date){
           console.log("got date"); 
@@ -51,16 +51,23 @@ export class DatabaseService {
       }) 
     }
 
-    getAllUsers() {
+getAllUsers()
+   {
       return new Promise<any>((resolve)=> {
        this.db.collection('users').valueChanges().subscribe(users => resolve(users))
       })
   }
-  onDelete(_id:any)
+
+
+onDelete(id:any)
   {
-     this.db.collection('users').doc(_id).delete();
+    // let userdata:any=localStorage.getItem('user')
+    // let userData = JSON.parse(userdata)
+   
+    this.db.collection('users').doc(id).delete();
+    
      }
-     generateid(length:any){
+generateid(length:any){
       
       let randomString=""
         randomString += Math.random().toString(20).substr(2, length);
@@ -71,5 +78,9 @@ export class DatabaseService {
         return randomString;
       
      }
+updateUser(id:any, _firstName:string, _lastName:string, _email:string,_date:string) {
+      this.db.doc(`users/${id}`).update({firstName:_firstName,lastName:_lastName , email:_email , date:_date});
+      
+  }
     }
     

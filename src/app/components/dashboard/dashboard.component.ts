@@ -8,9 +8,18 @@ import { DatabaseService } from 'src/app/services/database.service';
 })
 export class DashboardComponent implements OnInit {
   isSignedIn=false
-  name:any
-  appointments:any
+  updatedData:boolean=false;
   UsersData:any
+  editdata:any = {
+    "lastName": null,
+    "date": null,
+    "firstName": null,
+    "email": null,
+    "userId": null,
+    "_id": null
+  }
+
+ 
   constructor(public fireauthservice:FireauthService ,private service:DatabaseService){}
   ngOnInit(){
     if(localStorage.getItem('user')!=null)
@@ -30,9 +39,21 @@ export class DashboardComponent implements OnInit {
     this.fireauthservice.logOut()
     
   }
-  delUsers(id:any){
-    this.service.onDelete(id)
+  delUsers(_id:any){
+    this.service.onDelete(_id);
+   
   }
+  edit(alldata:any){
+    this.updatedData=true;
+    this.editdata = alldata;
+    console.log(this.editdata)
+  }
+  update( id:any ,firstname:string,lastname:string,email:string ,date:string){
+
+    this.service.updateUser(id ,firstname,lastname,email,date);
+    this.updatedData=false
+  }
+  
 
  
 }

@@ -8,9 +8,9 @@ import { DatabaseService } from 'src/app/services/database.service';
 export class AddComponent {
   constructor(private service: DatabaseService) {}
 
-  add(firstname:string,lastname:string,email:string ,date:string){
+  add(firstname:string,lastname:string,email:string ,date:string,time:string){
     
-    this.service.addNewUser( firstname,lastname,email,date);
+    this.service.addNewUser( firstname,lastname,email,date,time);
 
   }
 

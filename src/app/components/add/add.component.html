@@ -1,67 +1,82 @@
-<!-- <form >
-    <label for="name">First Name</label>
-    <input type="text" id="name">
-</form> -->
+
 <div class="row mt-5">
-    <div class="col-5 mx-auto"> 
-
+  <div class="col-5 mx-auto">
     <form>
-        <!-- 2 column grid layout with text inputs for the first and last names -->
-    <div class="row mb-4">
-      <div class="col">
-        <div class="form-outline">
+      <!-- 2 column grid layout with text inputs for the first and last names -->
+      <div class="row mb-4">
+        <div class="col">
+          <div class="form-outline">
             <label class="form-label" for="form6Example1">First name</label>
-          <input type="text" id="form6Example1" class="form-control" #f_name/>
+            <input
+              type="text"
+              id="form6Example1"
+              class="form-control"
+              #f_name
+            />
+          </div>
         </div>
-      </div>
-      <div class="col">
-        <div class="form-outline">
+        <div class="col">
+          <div class="form-outline">
             <label class="form-label" for="form6Example2">Last name</label>
-          <input type="text" id="form6Example2" class="form-control" #l_name />
+            <input
+              type="text"
+              id="form6Example2"
+              class="form-control"
+              #l_name
+            />
+          </div>
         </div>
       </div>
-    </div>
-  
-    <!-- Text input -->
 
-  
-    <!-- Text input -->
-    <div class="form-outline mb-4">
-        <label class="form-label" for="form6Example4">Address</label>
-      <input type="text" id="form6Example4" class="form-control" />
-    </div>
-  
-    <!-- Email input -->
-    <div class="form-outline mb-4">
+      <!-- Text input -->
+      <div class="form-outline mb-4">
+        <label class="form-label" for="form6Example4">Contact</label>
+        <input type="text" id="form6Example4" class="form-control" />
+      </div>
+
+      <!-- Email input -->
+      <div class="form-outline mb-4">
         <label class="form-label" for="form6Example5">Email</label>
-      <input type="email" id="form6Example5" class="form-control" #email/>
-    </div>
-  
-    <!-- Number input -->
-    <div class="row">
-        
-        <div class="form-outline mb-4 col-7" style="width: 20em;">
-            <label class="form-label" for="form6Example6">Phone</label>
-            <input type="text" id="form6Example6" class="form-control" />  </div>
-            <div class="col-6">
+        <input type="email" id="form6Example5" class="form-control" #email />
+      </div>
 
-                <label class="form-label" for="form6Example6">Choose Date</label>
-                <input type="date" id="form6Example6" class="form-control" #date/>
-            </div>
-      
-    </div>
-        
-    <!-- Message input -->
-    <div class="form-outline mb-4">
+      <!-- time input -->
+      <div class="row">
+        <div class="form-outline mb-4 col-7" style="width: 20em">
+          <label class="form-label" for="form6Example6">Start Time</label>
+         <select name="" id="" class="form-control" #time>
+          <option value="">9</option>
+          <option value="">10</option>
+          <option value="">11</option>
+          <option value="">12</option>
+          <option value="">1</option>
+          <option value="">2</option>
+
+
+
+         </select>
+        </div>
+      <!-- Date Input-->
+        <div class="col-6">
+          <label class="form-label" for="form6Example6">Choose Date</label>
+          <input type="date" id="form6Example6" class="form-control" #date />
+        </div>
+      </div>
+
+      <!-- Address input -->
+      <div class="form-outline mb-4">
         <label class="form-label" for="form6Example7">Address</label>
-      <textarea class="form-control" id="form6Example7" rows="4"></textarea>
-    </div>
-  
-   
-   
-  
-    <!-- Submit button -->
-    <button type="submit" class="btn btn-primary btn-block mb-4" (click)="add(f_name.value,l_name.value,email.value,date.value)">Add Booking</button>
-  </form>
-</div>
+        <textarea class="form-control" id="form6Example7" rows="4"></textarea>
+      </div>
+
+      <!-- Submit button -->
+      <button
+        type="submit"
+        class="btn btn-primary btn-block mb-4"
+        (click)="add(f_name.value, l_name.value, email.value, date.value,time.value)"
+      >
+        Add Booking
+      </button>
+    </form>
+  </div>
 </div>

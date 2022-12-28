@@ -1,64 +1,69 @@
 <button class="btn btn-danger btn3" (click)="Logout()">LogOut</button>
 <h1>Welcome to NSH</h1>
 <br />
-<div class="row">
-  <div class="col-lg-6">
-    <table class="table" border="2px" *ngIf="!updatedData">
+
+  
+    <!-- <table class="table" border="2px" *ngIf="!updatedData">
       <thead>
         <tr>
-          <th scope="col">S.No</th>
-          <th scope="col">Name</th>
-          <th scope="col">Email</th>
-          <th>Date</th>
+          <th>Name</th>
+          <th>speciality</th>
           <th>Time</th>
-          <th>Actions</th>
+          <th>Day</th>
+
+       
         </tr>
       </thead>
 
-      <tbody *ngFor="let alldata of UsersData; index as i">
+      <tbody *ngFor="let data of UsersData">
         <tr>
-          <th scope="row">{{ i + 1 }}</th>
-          <td>{{ alldata.firstName }} {{ alldata.lastName }}</td>
-          <td>{{ alldata.email }}</td>
-          <td>{{ alldata.date }}</td>
-          <td>{{ alldata.time }}</td>
-          <td>
-            <button (click)="edit(alldata)" class="btn btn-sm btn-success">
-              edit
-            </button>
-            <button
-              (click)="delUsers(alldata._id)"
-              class="btn btn-sm btn-danger"
-              style="margin-left: 5px"
-            >
-              delete
-            </button>
-          </td>
+         
+          <td>{{ data.name }}</td>
+          <td>{{ data.speciality }}</td>
+          <td>{{ data.starttime }}-{{ data.endtime }}</td>
+          <td>{{ data.day }}</td>
+          <td></td>
         </tr>
       </tbody>
-    </table>
-  </div>
-</div>
-
-<button class="btn btn-success my-2 my-sm-0 btn2" routerLink="add">
-  Create New
-</button>
-
-<div class="row mt-5" *ngIf="updatedData">
+    </table> -->
+    
+    <!-- <td> -->
+      <!-- <button (click)="edit(alldata)" class="btn btn-sm btn-success">
+        edit
+      </button> -->
+      <!-- <button
+        (click)="delUsers(alldata._id)"
+        class="btn btn-sm btn-danger"
+        style="margin-left: 5px"
+            >
+            delete
+          </button> -->
+          <!-- </td>
+          </tr>
+        </tbody>
+    
+        <!-- </div> -->
+    <!-- </div> -->
+    
+    <!-- <button class="btn btn-success my-2 my-sm-0 btn2" routerLink="add">
+      Create New
+    </button> -->
+    
+    <!-- <div class="row mt-5" *ngIf="updatedData">
   <div class="col-5 mx-auto">
     <form>
-      <!-- 2 column grid layout with text inputs for the first and last names -->
+      
       <div class="row mb-4">
         <div class="col">
           <div class="form-outline">
             <label class="form-label" for="form6Example1">First name</label>
             <input
-              name="f_name"
-              type="text"
-              id="form6Example1"
-              class="form-control"
-              [(ngModel)]="editdata.firstName"
-              #f_name
+            name="f_name"
+            type="text"
+            id="form6Example1"
+            class="form-control"
+            [(ngModel)]="editdata.firstName"
+            #f_name
             />
           </div>
         </div>
@@ -66,24 +71,24 @@
           <div class="form-outline">
             <label class="form-label" for="form6Example2">Last name</label>
             <input
-              name="l_name"
-              type="text"
-              id="form6Example2"
-              class="form-control"
+            name="l_name"
+            type="text"
+            id="form6Example2"
+            class="form-control"
               [(ngModel)]="editdata.lastName"
               #l_name
             />
           </div>
         </div>
       </div>
-
-      <!-- Text input -->
+      
+      
       <div class="form-outline mb-4">
         <label class="form-label" for="form6Example4">Address</label>
         <input type="text" id="form6Example4" class="form-control" />
       </div>
-
-      <!-- Email input -->
+      
+      
       <div class="form-outline mb-4">
         <label class="form-label" for="form6Example5">Email</label>
         <input
@@ -93,44 +98,75 @@
           name="email"
           [(ngModel)]="editdata.email"
           #email
-        />
+          />
       </div>
 
-      <!-- Contact Number input -->
+      
       <div class="row">
         <div class="form-outline mb-4 col-7" style="width: 20em">
           <label class="form-label" for="form6Example6">Contact</label>
           <input type="text" id="form6Example6" class="form-control" />
         </div>
-        <!-- Date Input-->
+     
         <div class="col-6">
           <label class="form-label" for="form6Example6">Choose Date</label>
           <input type="date" id="form6Example6" class="form-control" #date />
         </div>
       </div>
-
-      <!-- Address input -->
+      
+      
       <div class="form-outline mb-4">
         <label class="form-label" for="form6Example7">Address</label>
         <textarea class="form-control" id="form6Example7" rows="4"></textarea>
       </div>
-
-      <!-- Submit button -->
+      
+      
       <button
-        type="submit"
-        class="btn btn-primary btn-block mb-4"
-        (click)="
-          update(
-            editdata._id,
-            f_name.value,
+      type="submit"
+      class="btn btn-primary btn-block mb-4"
+      (click)="
+      update(
+        editdata._id,
+        f_name.value,
             l_name.value,
             email.value,
             date.value
-          )
-        "
-      >
-        update
-      </button>
-    </form>
+            )
+            "
+            >
+            update
+          </button>
+        </form>
   </div>
-</div>
+</div> -->
+<div  class="form-control" style="background-color: bisque; width: 300px;">
+   <!-- Doctor Speciality 
+  <select #doctor (change)="onchange(doctor.value)"> -->
+    <!-- <option value="FYTLoO7EwNfvV6qbiLDXa4PNApi2">Nitin</option>
+      <option value="gfhdfghdf">parshant</option> -->
+      <!-- <option *ngFor="let data of doctorData" value="{{ data.userId }}">
+        {{ data.speciality }}
+      </option>
+    </select>
+     -->
+    
+    <!-- <br><br><br>
+    Choose Your Doctor
+    <select >
+      <option *ngFor="let data of UsersData">{{data.name}}</option>
+      
+    </select> -->
+    <!-- <br><br><br> -->
+    Select Date
+    <input type="date" #date  (change)="all(date.value)"/> 
+    <br><br><br>
+    select speciality
+    <select >
+      <option *ngFor="let data of doctorday">{{data.speciality}}</option>
+    </select>
+    <br><br><br>
+    <select >
+      <option *ngFor="let data of "></option>
+    </select>
+    
+  </div>

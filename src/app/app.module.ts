@@ -18,6 +18,7 @@ import { provideFirestore, getFirestore } from '@angular/fire/firestore';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore/';
 import { provideDatabase,getDatabase } from '@angular/fire/database';
 import { ToastrModule } from 'ngx-toastr';
+import { DoctordashboardComponent } from './components/doctordashboard/doctordashboard.component';
 
 
 @NgModule({
@@ -29,6 +30,7 @@ import { ToastrModule } from 'ngx-toastr';
     DashboardComponent,
     NavbarComponent,
     AddComponent,
+    DoctordashboardComponent,
   ],
   imports: [
     BrowserModule,

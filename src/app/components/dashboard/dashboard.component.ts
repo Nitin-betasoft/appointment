@@ -18,6 +18,13 @@ export class DashboardComponent implements OnInit {
     "userId": null,
     "_id": null
   }
+  doctorData:any
+  
+  doctorday:any
+   
+ 
+//  this.getDayName(this.dateStr, "en-IN");
+
 
  
   constructor(public fireauthservice:FireauthService ,private service:DatabaseService){}
@@ -26,13 +33,16 @@ export class DashboardComponent implements OnInit {
     this.isSignedIn=true
     else
     this.isSignedIn=false
-    this.getUsers()
+    // this.getUsers()
+    this.getusers()
+   
+  
     
   }
-  async getUsers() {
-    this.UsersData = await this.service.getUsersData(null);
-    console.log(this.UsersData);
-   }
+  // async getUsers() {
+  //   this.UsersData = await this.service.getAllUsers();
+  //   console.log(this.UsersData);
+  //  }
 
   Logout(){
     console.log("here i am")
@@ -53,7 +63,36 @@ export class DashboardComponent implements OnInit {
     this.service.updateUser(id ,firstname,lastname,email,date);
     this.updatedData=false
   }
+  async onchange(value:string){
+    console.log("value => ", value)
+    const abc = await this.service.getAllUsers(value)
+    console.log("abc => ", abc)
+    this.UsersData=abc
+    console.log(typeof this.UsersData)
+  }
+  async getusers(){
+    this.doctorData = await this.service.getAllDoctors();
+   console.log(this.doctorData)
+  }
+getDayName(dateStr:any)
+{
+    var date = new Date(dateStr);
+    return date.toLocaleDateString('en-IN', { weekday: 'long' });        
+}
+adddate(date:string){
   
+
+}
+ async all(date:string){
+  console.log(date)
+   let day = this.getDayName(date)
+   console.log(day)
+ this.doctorday = await this.service.gettime(day)
+ console.log(this.doctorday);
+ 
+}
+
+
 
  
 }

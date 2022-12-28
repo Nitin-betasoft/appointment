@@ -11,7 +11,7 @@
             height: 300px;
           "
         ></div>
-        <!-- Background image -->
+       
 
         <div
           class="card mx-4 mx-md-5 shadow-5-strong"
@@ -59,35 +59,66 @@
                   <!-- Email input -->
                   <div class="form-outline mb-4">
                       <label class="form-label" 
-                        >Email address</label
+                        >FirstName</label
                       >
                     <input
                       type="email"
                       
                       class="form-control"
-                      placeholder="Your Email Address"
-                      #email
+                      placeholder="Enter Your FirstName"
+                      #firstName
                     />
                   </div>
-
-                  <!-- Password input -->
                   <div class="form-outline mb-4">
-                      <label class="form-label" 
-                        >Password</label
-                      >
-                    <input
-                      type="password"
-                      
-                      class="form-control"
-                      placeholder="Enter Password"
-                      #password
-                    />
-                  </div>
+                    <label class="form-label" 
+                      >lastName</label
+                    >
+                  <input
+                    type="email"
+                    
+                    class="form-control"
+                    placeholder="Enter Your LastName"
+                    #lastName
+                  />
+                </div>
+                  <div class="form-outline mb-4">
+                    <label class="form-label" 
+                      >Email address</label
+                    >
+                  <input
+                    type="email"
+                    
+                    class="form-control"
+                    placeholder="Your Email Address"
+                    #email
+                  />
+                </div>
+
+                 
+                  <div class="form-outline mb-4">
+                    <label class="form-label" 
+                      >Password</label
+                    >
+                  <input
+                    type="password"
+                    
+                    class="form-control"
+                    placeholder="Enter Password"
+                    #password
+                  />
+                </div>
+                <div>
+                  <select required #roles (change)="onSelected(roles.value)">
+                    <option  disabled>Choose your Role</option>
+                    <option>Doctor</option>
+                    <option>User</option>
+                  </select>
+                </div>
 
                   <!-- Checkbox -->
 
                   <!-- Submit button -->
-                  <button class="color btn btn-outline-success my-2 my-sm-0" (click)="OnSignUp(email.value,password.value);$event.preventDefault()">
+                  <button class="color btn btn-outline-success my-2 my-sm-0"  (click)="OnSignUp(firstName.value,lastName.value,email.value,password.value,roles.value);$event.preventDefault()">
                     Sign up
                   </button>
 

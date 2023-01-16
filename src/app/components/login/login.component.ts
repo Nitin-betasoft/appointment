@@ -22,4 +22,5 @@ export class LoginComponent implements OnInit {
    if(this.fireauthservice.isLoggedIn)
    this.isSignedIn=true
   }
+  
   }

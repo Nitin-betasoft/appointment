@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Router } from '@angular/router';
-// import { ToastrService } from 'ngx-toastr';
+import { ToastrService } from 'ngx-toastr';
 
 @Injectable({
   providedIn: 'root',
@@ -10,7 +10,7 @@ export class DatabaseService {
   constructor(
     private db: AngularFirestore,
     public router: Router,
-    // private toastr: ToastrService
+    private toastr: ToastrService
   ) {}
 
   // async addNewUser( _fName:string, _lName:string, _email:string) {
@@ -128,5 +128,56 @@ export class DatabaseService {
       .subscribe((users) => resolve(users));
   });
       }
+      async getstarttime(day :string,name:string){
+        console.log(day,  name)
+        return new Promise<any>((resolve) => {
+           this.db
+             .collection('doctor', (ref) => ref.where('day', '==', day).where('name', '==', name))
+             .valueChanges()
+             .subscribe((users) => resolve(users));
+         });
+            }
+
+ async addbooking( date:string, time:string, name:string) {
+          let userdata:any=localStorage.getItem('user')
+          let userData = JSON.parse(userdata)
+          let datedata = await this.getUsersData(date,time,name)
+          console.log("here i am =>", datedata);
+          if(datedata.length){
+            console.log("data exists",datedata)
+            this.toastr.error('PLEASE CHOOSE ANOTHER TIME', 'Time not available', {
+              timeOut: 3000,
+            });
+            return "data already exist"
+          }
+          
+          else{
+            console.log("not exists")
+            let gid=this.generateid(8)
+            console.log("gid =>", gid)
+            return this.db.collection("bookings").doc(gid).set({date:date,time:time,name:name, userId: userData.uid,_id:gid}),this.router.navigate(['/dashboard']);
+
+          }
+
+      }
+
+       async getUsersData(date:any,time:any,name:any) {
+        return new Promise<any>((resolve)=> {
+          if(time){
+            console.log("got date");
+            this.db.collection('bookings', ref => ref.where('date', '==', date).where('time','==',time).where('name','==',name)).valueChanges().subscribe((users:any) => resolve(users))
+          }
+          else {
+            console.log("date null");
+            let userdata:any=localStorage.getItem('user')
+            let userData = JSON.parse(userdata)
+
+          this.db.collection('bookings', ref => ref.where('userId', '==', userData._id)).valueChanges().subscribe(users => resolve(users))
+          }
+
+        })
+      }
+
+            
   }
 

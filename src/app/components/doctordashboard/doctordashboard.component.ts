@@ -9,8 +9,11 @@ import { FireauthService } from 'src/app/services/fireauth.service';
 export class DoctordashboardComponent {
   constructor(private service: DoctordatabaseService , private fireauthservice:FireauthService) {}
   date = ''
-  starttime=''
-  endtime=''
+  starttime:any;
+  endtime:any;
+  time:any;
+  Etime:any;
+  
 
 
   onSelected(day: string) {
@@ -27,8 +30,8 @@ export class DoctordashboardComponent {
 
   }
 
-  save(name: string, speciality: string, day: string ,starttime:string,endtime:string) {
-    this.service.doctordata(name, speciality, day,starttime,endtime);
+  save(name: string, speciality: string, day: string ,starttime:string,time:string) {
+    this.service.doctordata(name, speciality, day,starttime,time);
     
   }
   Logout(){

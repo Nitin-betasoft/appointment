@@ -139,8 +139,7 @@
         </form>
   </div>
 </div> -->
-<div  class="form-control" style="background-color: bisque; width: 300px;">
-   <!-- Doctor Speciality 
+<!-- Doctor Speciality 
   <select #doctor (change)="onchange(doctor.value)"> -->
     <!-- <option value="FYTLoO7EwNfvV6qbiLDXa4PNApi2">Nitin</option>
       <option value="gfhdfghdf">parshant</option> -->
@@ -148,25 +147,32 @@
         {{ data.speciality }}
       </option>
     </select>
-     -->
-    
-    <!-- <br><br><br>
+  -->
+  
+  <!-- <br><br><br>
     Choose Your Doctor
     <select >
       <option *ngFor="let data of UsersData">{{data.name}}</option>
       
     </select> -->
     <!-- <br><br><br> -->
-    Select Date
+    <div class="box">
+        ADD BOOKINGS
+     
+    </div>
+    <div  class="form-control" style="background-color: bisque; width: 300px;">
+    CHOOSE DATE
     <input type="date" #date  (change)="all(date.value)"/> 
     <br><br><br>
-    select speciality
-    <select >
-      <option *ngFor="let data of doctorday">{{data.speciality}}</option>
+    CHOOSE DOCTOR
+    <select #name (change)="data(date.value,name.value)" >
+      <option *ngFor="let data of doctorday" value="{{data.name}}">{{data.name}}</option>
     </select>
     <br><br><br>
-    <select >
-      <option *ngFor="let data of "></option>
+    TIME SLOTS
+    <select #time >
+      <option *ngFor="let i of timeStops">{{i}}</option>
     </select>
-    
+    <br><br>
+   <button class="btn btn-outline-success btn5" (click)="addbooking(date.value,time.value,name.value)">ADD</button>
   </div>

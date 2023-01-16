@@ -19,6 +19,11 @@ import { AngularFirestoreModule } from '@angular/fire/compat/firestore/';
 import { provideDatabase,getDatabase } from '@angular/fire/database';
 import { ToastrModule } from 'ngx-toastr';
 import { DoctordashboardComponent } from './components/doctordashboard/doctordashboard.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatFormFieldModule } from '@angular/material/form-field'
+import { MatInputModule } from '@angular/material/input';
+import { NgxMatTimepickerModule } from 'ngx-mat-timepicker';
+
 
 
 @NgModule({
@@ -36,7 +41,9 @@ import { DoctordashboardComponent } from './components/doctordashboard/doctordas
     BrowserModule,
     AppRoutingModule,
     ToastrModule.forRoot(),
-    
+    MatFormFieldModule,
+    MatInputModule,
+    NgxMatTimepickerModule,
     FormsModule,
     AngularFirestoreModule,
     AngularFireModule.initializeApp(environment.firebase),
@@ -44,6 +51,7 @@ import { DoctordashboardComponent } from './components/doctordashboard/doctordas
     provideAuth(() => getAuth()),
     provideFirestore(() => getFirestore()),
     provideDatabase(() => getDatabase()),
+    BrowserAnimationsModule,
 
   ],
   providers: [AngularFireModule],
